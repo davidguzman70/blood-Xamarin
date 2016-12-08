@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:blood" x:Class="blood.bloodPage">
+
+  <StackLayout Orientation="Vertical" Padding="20">
+ <Label Text="Banco de Sangre"
+         VerticalOptions="Start"
+         HorizontalTextAlignment="Center"
+         Rotation="-15"
+         IsVisible="true"
+         FontSize="Large"
+         FontAttributes="Bold"
+         TextColor="Red" />
+		<Label Text="" />
+f		<Label Text="Nombre del donante:" />
+            <Entry Text="{Binding personaTxt}" />
+		<Label Text="Correo" />
+            <Entry x:Name="emailText" Text="" />
+
+		<Button x:Name="AgregarButton" Text="Agregar Donante" Command="{Binding agregarPersonaCommand}"></Button>
+		<Button Text="Limpiar" Command="{Binding PurgeCommand}"></Button>
+		
+   		<ActivityIndicator IsRunning="{Binding IsBusy}" />
+		<ListView ItemsSource="{Binding Contacts}"
+              IsRefreshing="{Binding IsBusy}"
+              IsPullToRefreshEnabled="True"
+              RefreshCommand="{Binding RefreshCommand}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell Text="{Binding persona}"
+                    Detail="{Binding Version}"/>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+  </StackLayout>
+	
+</ContentPage>
